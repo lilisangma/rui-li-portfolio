@@ -33,3 +33,21 @@ body,button,input,textarea,select,.brand,.hero h1,.hero h1 i,.serif,.note,.portr
 .editorial-cover .hero-index{margin-top:24px;padding:18px 0;font-size:8px}
 @media(max-width:900px){.cover-composition{height:295px}.cover-art-a{height:180px}.cover-art-b{height:160px;top:90px}.cover-art-c{height:130px}.cover-intro{width:17%}.cover-intro p{font-size:17px}.cover-signature{min-width:200px}.cover-signature p{font-size:19px}.editorial-cover h1{font-size:24vw}}
 @media(max-width:600px){.editorial-cover{padding-top:24px;background-size:68px 68px}.cover-composition{height:285px;margin-top:28px}.cover-art-a{width:53%;height:145px;top:0}.cover-art-b{width:43%;height:122px;left:57%;top:62px}.cover-art-c{width:35%;height:95px;left:8%;top:175px}.cover-art span{font-size:6px;letter-spacing:0}.cover-intro{right:2%;bottom:0;width:43%}.cover-mark{display:none}.cover-intro p{font-size:17px;margin-bottom:7px}.cover-intro>span:last-child{font-size:6px}.cover-title-row{display:block;padding-top:35px}.editorial-cover h1{font-size:41vw;line-height:.9;margin:0 0 30px;letter-spacing:-.07em}.cover-signature{display:grid;grid-template-columns:1fr 1fr;gap:12px;min-width:0}.cover-signature>span{font-size:9px;grid-column:1}.cover-signature p{font-size:17px;grid-row:2;margin:0;white-space:nowrap}.cover-enter{grid-column:2;grid-row:2;align-self:end;margin:0 0 4px 15px;font-size:10px;padding-top:0}.editorial-cover .hero-index{font-size:6px;margin-top:20px}}
+
+/* Cover artwork gallery, kept independent from project pages. */
+.editorial-cover{background-image:none}
+.cover-composition{height:auto;min-height:365px;display:grid;grid-template-columns:1.1fr .85fr 1.1fr;gap:26px;margin-top:42px;margin-bottom:45px;align-items:start}
+.cover-art{position:relative;left:auto;right:auto;top:auto;width:auto;height:auto}
+.cover-art img{height:265px;object-fit:cover;object-position:center;background:#ecece6;box-shadow:none}
+.cover-art-b img{height:215px;background:#eeedf4;object-fit:cover}
+.cover-art-c img{height:290px;background:#e8eef0}
+.cover-caption{display:flex;align-items:flex-start;gap:12px;padding-top:14px;border-top:1px solid #20211d22;margin-top:12px}
+.cover-caption strong{font-size:31px;font-weight:400;line-height:1;letter-spacing:-.07em}
+.cover-caption h2{font-size:15px;line-height:1.2;letter-spacing:-.02em;margin:0 0 7px;font-weight:500}
+.cover-caption p{font-size:10px;line-height:1.5;color:var(--muted)}
+.cover-art .cover-caption span{font-size:8px;padding-top:12px;letter-spacing:0}
+.cover-title-row{padding-top:0;gap:35px}
+.editorial-cover h1{font-size:clamp(140px,22vw,330px)}
+.cover-signature{min-width:235px}
+@media(max-width:900px){.cover-composition{gap:18px;min-height:310px;margin-bottom:35px}.cover-art img{height:210px}.cover-art-b img{height:175px}.cover-art-c img{height:230px}.cover-caption strong{font-size:25px}.cover-caption{gap:8px}.cover-caption h2{font-size:13px}.cover-caption p{font-size:9px}.editorial-cover h1{font-size:24vw}.cover-signature{min-width:200px}}
+@media(max-width:600px){.cover-composition{grid-template-columns:1fr 1fr;gap:25px 15px;margin-top:28px;margin-bottom:40px;min-height:0}.cover-art-a{grid-column:1/-1}.cover-art-a img{height:auto;aspect-ratio:1.65;object-fit:cover}.cover-art-b img{height:170px;object-fit:cover}.cover-art-c img{height:205px;object-fit:cover}.cover-caption{margin-top:9px;padding-top:10px;gap:9px}.cover-caption strong{font-size:25px}.cover-caption h2{font-size:13px}.cover-caption p{font-size:8px}.cover-art .cover-caption span{font-size:7px;padding-top:8px}.cover-title-row{padding-top:0}.editorial-cover h1{font-size:41vw;margin-bottom:25px}.cover-signature{min-width:0}.cover-signature p{font-size:16px}}
