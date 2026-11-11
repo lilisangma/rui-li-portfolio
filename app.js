@@ -15,3 +15,22 @@ document.querySelector('#copy-email').addEventListener('click',async()=>{try{awa
 const home=document.querySelector('#home'),caseView=document.querySelector('#case-view');let lastScroll=0;
 function route(){const match=location.hash.match(/^#project=([a-z]+)/);const p=match&&projects.find(x=>x.id===match[1]);if(!p){home.hidden=false;caseView.hidden=true;document.title='李睿 Rui Li — 体验与服务设计';if(location.hash==='#work')document.querySelector('#work').scrollIntoView();return}lastScroll=window.scrollY;home.hidden=true;caseView.hidden=false;const next=projects[(projects.indexOf(p)+1)%projects.length];caseView.innerHTML=`<div class="case-nav"><a href="#work">← 返回作品列表</a><span>${p.type} / CASE STUDY</span></div><section class="case-header"><p class="eyebrow">${p.tags.join(' / ')}</p><h1>${p.title}</h1><p class="lead">${p.lead}</p><div class="case-facts"><p><span>角色 / ROLE</span>${p.role}</p><p><span>参与范围 / SCOPE</span>${p.scope}</p><p><span>项目背景 / CONTEXT</span>${p.context}</p></div></section><div style="background:${p.color};padding:5% 12%"><img src="${coverPath(p)}" alt="${p.title} 项目概览"></div><section class="case-intro"><div><p class="eyebrow">THE CHALLENGE</p><h2>从真实问题开始</h2><p>${p.problem}</p></div><div><p class="eyebrow">MY CONTRIBUTION</p><h2>我的参与</h2><ul>${p.contribution.map(c=>`<li>${c}</li>`).join('')}</ul></div></section><div class="case-gallery">${p.id==='bitbites'?`<figure><button data-case-image="assets/bitbites-original.png" data-caption="原始界面：轻食菜单浏览" aria-label="放大：轻食菜单原始界面"><img loading="lazy" src="assets/bitbites-original.png" alt="Bit Bites 轻食菜单原始设计图"></button><figcaption>原始界面 / 菜单浏览与分类</figcaption></figure>`:''}${p.pages.map(([n,c],i)=>`<figure><button data-case-image="${n}" data-caption="${c}" aria-label="放大：${c}"><img loading="lazy" src="assets/p${String(n).padStart(2,'0')}.jpg" alt="${c}"></button><figcaption><span>0${i+1} / ${c}</span><span>点击放大 ↗</span></figcaption></figure>`).join('')}</div><aside class="case-outcome"><h3>阶段产出与思考</h3><p>${p.outcome}</p></aside><a class="case-next" href="#project=${next.id}"><p>NEXT PROJECT →</p><h2>${next.title} ↗</h2></a>`;caseView.querySelectorAll('[data-case-image]').forEach(b=>b.addEventListener('click',()=>showImage(b.dataset.caseImage,b.dataset.caption)));document.title=`${p.title} — 李睿 Rui Li`;window.scrollTo({top:0,behavior:'instant'});}
 window.addEventListener('hashchange',route);route();
+
+
+const photoCarousel=document.querySelector('[data-photo-carousel]');
+if(photoCarousel){
+ const photos=[
+  {src:'assets/photo-01.jpeg',alt:'英国海岸与白色悬崖',caption:'海岸线 / 英国'},
+  {src:'assets/photo-02.jpeg',alt:'蓝天下的哥特式建筑塔楼',caption:'塔楼与晴空 / 格拉斯哥'},
+  {src:'assets/photo-03.jpeg',alt:'格拉斯哥大学指示牌与秋日草坪',caption:'校园午后 / 格拉斯哥'},
+  {src:'assets/photo-04.jpeg',alt:'秋日光线中的树木与街道',caption:'秋日树影 / 格拉斯哥'},
+  {src:'assets/photo-05.jpeg',alt:'海边白色悬崖与灯塔',caption:'灯塔与海雾 / 英国'},
+  {src:'assets/photo-06.jpeg',alt:'英国海岸与白色悬崖远景',caption:'潮汐与白崖 / 英国'}
+ ];
+ const photoImage=photoCarousel.querySelector('#photo-main-image'),photoCaption=photoCarousel.querySelector('#photo-caption'),photoCount=photoCarousel.querySelector('#photo-count'),dots=[...photoCarousel.querySelectorAll('[data-photo-dot]')];let activePhoto=0;
+ const setPhoto=(index)=>{activePhoto=(index+photos.length)%photos.length;const photo=photos[activePhoto];photoImage.classList.add('is-changing');window.setTimeout(()=>{photoImage.src=photo.src;photoImage.alt=photo.alt;photoCaption.textContent=photo.caption;photoCount.textContent=String(activePhoto+1).padStart(2,'0')+' / '+String(photos.length).padStart(2,'0');dots.forEach((dot,i)=>{const selected=i===activePhoto;dot.classList.toggle('active',selected);dot.setAttribute('aria-selected',String(selected))});photoImage.classList.remove('is-changing')},120)};
+ photoCarousel.querySelector('[data-photo-prev]').addEventListener('click',()=>setPhoto(activePhoto-1));
+ photoCarousel.querySelector('[data-photo-next]').addEventListener('click',()=>setPhoto(activePhoto+1));
+ dots.forEach((dot,i)=>dot.addEventListener('click',()=>setPhoto(i)));
+ photoCarousel.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){e.preventDefault();setPhoto(activePhoto-1)}if(e.key==='ArrowRight'){e.preventDefault();setPhoto(activePhoto+1)}});
+}
