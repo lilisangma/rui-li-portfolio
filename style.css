@@ -57,3 +57,24 @@ body,button,input,textarea,select,.brand,.hero h1,.hero h1 i,.serif,.note,.portr
 .cover-caption strong{font-family:"Snell Roundhand","Apple Chancery","URW Chancery L",cursive;font-style:italic;font-weight:400;letter-spacing:-.12em;font-size:38px;line-height:.82}
 @media(max-width:900px){.cover-caption strong{font-size:31px}}
 @media(max-width:600px){.cover-caption strong{font-size:30px}}
+
+
+/* Photography carousel */
+.photography{background:#20211d;color:#f7f7f2}
+.photography .section-aside{color:#b9bbb1}
+.photography .serif{color:#f7f7f2}
+.photo-carousel{border-top:1px solid #f7f7f23d;padding-top:16px}
+.photo-stage{position:relative;display:flex;align-items:center;justify-content:center;height:min(56vw,690px);min-height:440px;background:#151613;overflow:hidden}
+.photo-stage:after{content:"";position:absolute;inset:0;border:1px solid #ffffff16;pointer-events:none}
+.photo-stage img{width:100%;height:100%;object-fit:contain;object-position:center;opacity:1;transition:opacity .32s ease}
+.photo-stage img.is-changing{opacity:.28}
+.photo-stage figcaption{position:absolute;z-index:1;left:0;right:0;bottom:0;display:flex;justify-content:space-between;gap:20px;padding:18px 22px;color:#f7f7f2;font-size:10px;letter-spacing:.08em;background:linear-gradient(transparent,#0000008f)}
+.photo-controls{display:flex;align-items:center;justify-content:center;gap:26px;padding-top:20px}
+.photo-arrow{width:38px;height:38px;border:1px solid #f7f7f25c;border-radius:50%;color:#f7f7f2;font-size:17px;line-height:1;transition:background .2s,color .2s}
+.photo-arrow:hover{background:#f7f7f2;color:#20211d}
+.photo-dots{display:flex;align-items:center;gap:9px}
+.photo-dots button{width:27px;height:14px;position:relative}
+.photo-dots button:after{content:"";position:absolute;top:6px;left:0;right:0;height:1px;background:#777a72;transition:background .2s,transform .2s}
+.photo-dots button.active:after,.photo-dots button:hover:after{background:#f7f7f2;transform:scaleX(1.18)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:600px){.photo-stage{min-height:390px;height:115vw}.photo-stage figcaption{padding:14px;font-size:8px}.photo-controls{gap:17px;padding-top:16px}.photo-dots{gap:5px}.photo-dots button{width:20px}}
